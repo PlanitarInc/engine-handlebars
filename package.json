@@ -22,7 +22,7 @@
   "dependencies": {
     "engine-utils": "^0.1.0",
     "extend-shallow": "^2.0.1",
-    "handlebars": "^4.0.2"
+    "plntr-handlebars": "^1004.0.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

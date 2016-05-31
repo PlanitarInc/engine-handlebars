@@ -27,7 +27,7 @@ describe('.Handlebars', function () {
 
     var ctx = {name: 'Halle Schlinkert'};
 
-    engine.render('{{blah name}}', ctx, function (err, content) {
+    engine.render('<{{blah name}}>', ctx, function (err, content) {
       assert(content === 'halle schlinkert');
       done();
     });
@@ -36,18 +36,18 @@ describe('.Handlebars', function () {
 
 describe('.compile()', function () {
   it('should compile a template.', function () {
-    var fn = engine.compile('Halle {{ name }}');
+    var fn = engine.compile('Halle <{{ name }}>');
     assert(typeof fn === 'function');
   });
 
   it('should render a template with a compiled function.', function () {
-    var fn = engine.compile('Halle {{ name }}');
+    var fn = engine.compile('Halle <{{ name }}>');
     assert(typeof fn === 'function');
     assert(fn({name: 'Schlinkert'}) === 'Halle Schlinkert');
   });
 
   it('should immediately return an already compiled function.', function () {
-    var compiled = engine.compile('Halle {{ name }}');
+    var compiled = engine.compile('Halle <{{ name }}>');
     var fn = engine.compile(compiled);
     assert(typeof fn === 'function');
     assert(fn({name: 'Schlinkert'}) === 'Halle Schlinkert');
@@ -58,7 +58,7 @@ describe('.compile()', function () {
 describe('.render()', function() {
   it('should render templates in a string:', function(done) {
     var ctx = {name: 'Halle Schlinkert'};
-    engine.render('{{ name }}', ctx, function (err, content) {
+    engine.render('<{{ name }}>', ctx, function (err, content) {
       assert(content === 'Halle Schlinkert');
       done();
     });
@@ -66,7 +66,7 @@ describe('.render()', function() {
 
   it('should render templates from a compiled function:', function(done) {
     var ctx = {name: 'Halle Schlinkert'};
-    var fn = engine.compile('{{ name }}');
+    var fn = engine.compile('<{{ name }}>');
     engine.render(fn, ctx, function (err, content) {
       assert(content === 'Halle Schlinkert');
       done();
@@ -82,7 +82,7 @@ describe('.render()', function() {
   });
 
   it('should handle engine errors:', function(done) {
-    engine.render('{{foo}}}', function (err, content) {
+    engine.render('<{{foo}}}>', function (err, content) {
       assert(err);
       assert(typeof err === 'object');
       assert(/Parse error/.test(err.message));
@@ -104,7 +104,7 @@ describe('.render()', function() {
       }
     };
 
-    engine.render('{{upper (include "content.hbs")}}', ctx, function (err, content) {
+    engine.render('<{{upper (include "content.hbs")}}>', ctx, function (err, content) {
       if (err) return done(err);
       assert(content === 'JON SCHLINKERT');
       done();
@@ -114,7 +114,7 @@ describe('.render()', function() {
   it('should use partials passed on the options.', function(done) {
     var ctx = {partials: {a: 'foo', b: 'bar'}};
 
-    engine.render('{{> a }}{{> b }}', ctx, function (err, content) {
+    engine.render('<{{> a }}><{{> b }}>', ctx, function (err, content) {
       if (err) return done(err);
       assert(content === 'foobar');
       done();
@@ -125,19 +125,19 @@ describe('.render()', function() {
 
 describe('.renderSync()', function () {
   it('should render a template.', function () {
-    var str = engine.renderSync('Halle {{ name }}', {name: 'Schlinkert'});
+    var str = engine.renderSync('Halle <{{ name }}>', {name: 'Schlinkert'});
     assert(str === 'Halle Schlinkert');
   });
 
   it('should render a template from a compiled function.', function () {
-    var fn = engine.compile('Halle {{ name }}');
+    var fn = engine.compile('Halle <{{ name }}>');
     var str = engine.renderSync(fn, {name: 'Schlinkert'});
     assert(str === 'Halle Schlinkert');
   });
 
   it('should throw engine errors:', function() {
     try {
-      engine.renderSync('{{foo}}}');
+      engine.renderSync('<{{foo}}}>');
     } catch(err) {
       assert(err);
       assert(typeof err === 'object');
@@ -192,7 +192,7 @@ describe('.renderFile()', function() {
   it('should render templates using locals as context:', function(done) {
     var vinyl = new Vinyl({
       path: 'foo.hbs',
-      contents: new Buffer('{{ name }}')
+      contents: new Buffer('<{{ name }}>')
     });
 
     engine.renderFile(vinyl, {name: 'Handlebars'}, function (err, file) {
@@ -206,7 +206,7 @@ describe('.renderFile()', function() {
   it('should render templates using `file.data` as context:', function(done) {
     var vinyl = new Vinyl({
       path: 'foo.hbs',
-      contents: new Buffer('{{ name }}')
+      contents: new Buffer('<{{ name }}>')
     });
 
     vinyl.data = {name: 'Halle Schlinkert'};
@@ -222,7 +222,7 @@ describe('.renderFile()', function() {
   it('should prefer `file.data` over locals:', function(done) {
     var vinyl = new Vinyl({
       path: 'foo.hbs',
-      contents: new Buffer('{{ name }}')
+      contents: new Buffer('<{{ name }}>')
     });
 
     vinyl.data = {name: 'Halle Schlinkert'};
@@ -238,7 +238,7 @@ describe('.renderFile()', function() {
   it('should render templates from a compiled function:', function(done) {
     var vinyl = new Vinyl({
       path: 'foo.hbs',
-      contents: new Buffer('{{ name }}')
+      contents: new Buffer('<{{ name }}>')
     });
 
     vinyl.data = {name: 'Halle Schlinkert'};
@@ -256,7 +256,7 @@ describe('.renderFile()', function() {
   it('should handle engine errors', function(done) {
     var vinyl = new Vinyl({
       path: 'foo.hbs',
-      contents: new Buffer('{{ name }}}')
+      contents: new Buffer('<{{ name }}}>')
     });
 
     engine.renderFile(vinyl, function (err, file) {

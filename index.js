@@ -18,7 +18,7 @@ var requires = {};
  * Handlebars support.
  */
 
-var engine = module.exports = utils.fromStringRenderer('handlebars');
+var engine = module.exports = utils.fromStringRenderer('plntr-handlebars');
 
 /**
  * Engine options
@@ -33,7 +33,7 @@ engine.options = {
  * Expose `Handlebars`, to give users access to the same instance
  */
 
-engine.Handlebars = requires.Handlebars || (requires.Handlebars = require('handlebars'));
+engine.Handlebars = requires.Handlebars || (requires.Handlebars = require('plntr-handlebars'));
 
 /**
  * Handlebars string support. Compile the given `str` and register
