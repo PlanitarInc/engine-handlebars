@@ -1,4 +1,4 @@
-# engine-handlebars [![NPM version](https://badge.fury.io/js/engine-handlebars.svg)](http://badge.fury.io/js/engine-handlebars)  [![Build Status](https://travis-ci.org/jonschlinkert/engine-handlebars.svg)](https://travis-ci.org/jonschlinkert/engine-handlebars)
+# engine-plntr-handlebars [![Build Status](https://travis-ci.org/PlanitarInc/engine-handlebars.svg)](https://travis-ci.org/PlanitarInc/engine-handlebars)
 
 ## ===================================================
 
@@ -19,7 +19,7 @@ The only difference is the delimiters of the underlying Handlebaras are
 Install with [npm](https://www.npmjs.com/)
 
 ```sh
-$ npm i engine-handlebars --save
+$ npm i engine-plntr-handlebars --save
 ```
 
 <!-- toc -->
