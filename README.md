@@ -1,5 +1,15 @@
 # engine-handlebars [![NPM version](https://badge.fury.io/js/engine-handlebars.svg)](http://badge.fury.io/js/engine-handlebars)  [![Build Status](https://travis-ci.org/jonschlinkert/engine-handlebars.svg)](https://travis-ci.org/jonschlinkert/engine-handlebars)
 
+## ===================================================
+
+### THIS IS A FORK OF
+[jonschlinkert/engine-handlebars](https://github.com/PlanitarInc/engine-handlebars)
+
+The only difference is the delimiters of the underlying Handlebaras are
+`<{{` and `}}>` instead of `{{` and `}}` respectively.
+
+## ===================================================
+
 > Handlebars engine, consolidate.js style but with enhancements. This works with Assemble, express.js, engine-cache or any application that follows consolidate.js conventions.
 
 **Heads up!** [Breaking changes in 0.8.0](#history).

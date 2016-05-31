@@ -1,12 +1,12 @@
 {
-  "name": "engine-handlebars",
-  "description": "Handlebars engine, consolidate.js style but with enhancements. This works with Assemble, express.js, engine-cache or any application that follows consolidate.js conventions.",
+  "name": "engine-plntr-handlebars",
+  "description": "Planitar Handlebars engine, consolidate.js style but with enhancements. This works with Assemble, express.js, engine-cache or any application that follows consolidate.js conventions.",
   "version": "0.8.0",
-  "homepage": "https://github.com/jonschlinkert/engine-handlebars",
+  "homepage": "https://github.com/PlanitarInc/engine-handlebars",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
-  "repository": "jonschlinkert/engine-handlebars",
+  "repository": "PlanitarInc/engine-handlebars",
   "bugs": {
-    "url": "https://github.com/jonschlinkert/engine-handlebars/issues"
+    "url": "https://github.com/PlanitarInc/engine-handlebars/issues"
   },
   "license": "MIT",
   "files": [
